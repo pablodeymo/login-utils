@@ -1,9 +1,6 @@
 use actix_web::HttpResponse;
+use actix_web_validator::Validate;
 use serde::{Deserialize, Serialize};
-use validator::Validate;
-
-#[macro_use]
-extern crate validator_derive;
 
 #[derive(Deserialize, Debug, Validate)]
 pub struct LoginReq {
