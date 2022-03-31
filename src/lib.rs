@@ -1,6 +1,6 @@
 use actix_web::HttpResponse;
-use actix_web_validator::Validate;
 use serde::{Deserialize, Serialize};
+use validator::Validate;
 
 #[derive(Deserialize, Debug, Validate)]
 pub struct LoginReq {
@@ -18,13 +18,5 @@ impl Into<HttpResponse> for LoginResp {
         HttpResponse::Ok()
             .content_type("application/json")
             .body(serde_json::to_string(&self).unwrap())
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
     }
 }
