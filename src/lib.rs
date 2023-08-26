@@ -13,10 +13,10 @@ pub struct LoginResp {
     pub token: String,
 }
 
-impl Into<HttpResponse> for LoginResp {
-    fn into(self) -> HttpResponse {
+impl From<LoginResp> for HttpResponse {
+    fn from(val: LoginResp) -> Self {
         HttpResponse::Ok()
             .content_type("application/json")
-            .body(serde_json::to_string(&self).unwrap())
+            .body(serde_json::to_string(&val).unwrap())
     }
 }
